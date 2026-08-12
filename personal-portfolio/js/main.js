@@ -401,14 +401,18 @@ function renderLibrary() {
 }
 
 /* ==========================================
-   CONTACT FORM INTEGRATION (SIMULATED)
+   CONTACT FORM INTEGRATION (GOOGLE APPS SCRIPT)
    ========================================== */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const alertEl = document.getElementById('form-alert');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  // Đã tích hợp link Web App của Google Apps Script
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxoyrJmekh12kyP-bS3NH3CFKW1NQLD7OsDPWhKuVIDS7EwRF4YkmJnwsVjx4Rr205Xg/exec';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const name = document.getElementById('form-name').value;
@@ -416,18 +420,65 @@ function initContactForm() {
     const subject = document.getElementById('form-subject').value;
     const message = document.getElementById('form-message').value;
 
-    // Simulate sending message
     if (alertEl) {
-      alertEl.className = 'form-alert success';
-      alertEl.innerHTML = `
-        <i class="fa-solid fa-circle-check"></i> 
-        <strong>Gửi thông tin thành công!</strong> Cảm ơn anh <strong>${name}</strong>, thông tin liên hệ đã được mô phỏng tiếp nhận. 
-        Khi cấu hình xong web trên GitHub Pages, ta có thể tích hợp với Formspree để nhận mail thực tế.
-      `;
-      alertEl.style.display = 'block';
+      alertEl.style.display = 'none';
+      alertEl.className = 'form-alert';
+    }
 
-      // Clear form
-      form.reset();
+    // Đổi trạng thái nút bấm thành Đang gửi
+    const originalBtnText = submitBtn.innerHTML;
+    if (submitBtn) {
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi...';
+      submitBtn.disabled = true;
+    }
+
+    try {
+      if (APPS_SCRIPT_URL === 'YOUR_WEB_APP_URL_HERE') {
+        throw new Error('Chưa cấu hình đường link Apps Script (APPS_SCRIPT_URL). Vui lòng cập nhật file main.js!');
+      }
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('subject', subject);
+      formData.append('message', message);
+
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.status === 'success') {
+        if (alertEl) {
+          alertEl.className = 'form-alert success';
+          alertEl.innerHTML = `
+            <i class="fa-solid fa-circle-check"></i> 
+            <strong>Gửi thành công!</strong> Cảm ơn <strong>${name}</strong>, thông tin của bạn đã được gửi. Chúng tôi sẽ phản hồi sớm nhất qua email.
+          `;
+          alertEl.style.display = 'block';
+        }
+        form.reset();
+      } else {
+        throw new Error('Lỗi từ máy chủ Apps Script');
+      }
+    } catch (error) {
+      if (alertEl) {
+        alertEl.className = 'form-alert error';
+        alertEl.innerHTML = `
+          <i class="fa-solid fa-circle-xmark"></i> 
+          <strong>Có lỗi xảy ra:</strong> ${error.message}. Vui lòng thử lại sau!
+        `;
+        alertEl.style.display = 'block';
+      }
+    } finally {
+      // Khôi phục nút bấm
+      if (submitBtn) {
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    }
 
       // Hide message after 8 seconds
       setTimeout(() => {
