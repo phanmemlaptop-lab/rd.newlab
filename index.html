@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio cá nhân của Kỹ sư Nghiên cứu & Phát triển (R&D) Mỹ phẩm, Hóa mỹ phẩm, Thực phẩm, đam mê công nghệ, cải tiến và tự động hóa quy trình (Auto RD, Auto KHVT, Auto Box, Autofile).">
+  <meta name="author" content="R&D & Automation Specialist">
+  <title>Kỹ Sư R&D & Automation - Đam Mê Công Nghệ & Cải Tiến</title>
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Interactive Particle Canvas & Cursor Glow -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Dynamic Glowing Mesh Background -->
+  <div class="mesh-background">
+    <div class="glowing-circle circle-1"></div>
+    <div class="glowing-circle circle-2"></div>
+    <div class="glowing-circle circle-3"></div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <svg class="logo-svg" width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 5px rgba(6, 182, 212, 0.5));">
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#06b6d4" />
+              <stop offset="100%" stop-color="#a855f7" />
+            </linearGradient>
+          </defs>
+          <!-- Stylized beaker flask -->
+          <path d="M42,15 H58 M50,15 V35 L30,75 C27,80 31,86 37,86 H63 C69,86 73,80 70,75 L50,35" stroke="url(#logo-grad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          <!-- Nodes & Connections representing automation -->
+          <circle cx="50" cy="52" r="5" fill="#06b6d4" />
+          <circle cx="38" cy="70" r="4" fill="#a855f7" />
+          <circle cx="62" cy="70" r="4" fill="#06b6d4" />
+          <path d="M50,52 L38,70 M50,52 L62,70" stroke="url(#logo-grad)" stroke-width="2" stroke-dasharray="3,3" />
+          <circle cx="50" cy="27" r="10" stroke="#a855f7" stroke-width="3" fill="none" stroke-dasharray="4,2" />
+        </svg>
+        <span class="logo-text"><span class="gradient-text">rd</span><span class="logo-plus">.</span><span>newlab</span></span>
+      </a>
+      
+      <nav class="nav" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link active-link">Giới thiệu</a></li>
+          <li class="nav-item"><a href="#expertise" class="nav-link">Lĩnh vực R&D</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Kho Ứng dụng</a></li>
+          <li class="nav-item"><a href="#library" class="nav-link">Thư viện Tài liệu</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link nav-btn">Liên hệ</a></li>
+        </ul>
+      </nav>
+      
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="hero section" id="about">
+      <div class="container hero-container grid">
+        <div class="hero-content">
+          <span class="hero-subtitle">🧪 <span id="typing-text">R&D & AUTOMATION SPECIALIST</span></span>
+          <h1 class="hero-title" id="hero-title">
+            Nghiên Cứu <span class="gradient-text">Công Thức</span> & <br>
+            Tự Động Hóa <span class="gradient-text">Quy Trình</span>
+          </h1>
+          <p class="hero-description" id="hero-bio">
+            Đang tải thông tin giới thiệu...
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-cube"></i> Khám phá ứng dụng
+            </a>
+            <a href="#library" class="btn btn-secondary">
+              <i class="fa-solid fa-download"></i> Tải tài liệu R&D
+            </a>
+          </div>
+        </div>
+        
+        <!-- Interactive Tech & Chem Artwork -->
+        <div class="hero-visual">
+          <div class="visual-card glass">
+            <div class="visual-circles">
+              <div class="circle-orbit orbit-1"></div>
+              <div class="circle-orbit orbit-2"></div>
+              <div class="visual-flask-container">
+                <i class="fa-solid fa-flask flask-icon"></i>
+                <div class="flask-bubbles"></div>
+              </div>
+            </div>
+            <div class="visual-info">
+              <div class="info-item">
+                <span class="info-label">R&D Formulation</span>
+                <span class="info-value">Mỹ phẩm / Thực phẩm / Dược</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Automation Apps</span>
+                <span class="info-value">Auto RD • KHVT • Box • Autofile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Section (Lĩnh vực chuyên môn R&D) -->
+    <section class="expertise section" id="expertise">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Lĩnh Vực Chuyên Môn</h2>
+          <p class="section-subtitle">Nghiên cứu khoa học bài bản, thiết lập công thức và quy trình đạt chuẩn</p>
+        </div>
+        
+        <div class="expertise-grid grid" id="expertise-container">
+          <!-- Rendered dynamically from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section (Kỹ năng nâng cao) -->
+    <section class="skills-section section">
+      <div class="container grid skills-container">
+        <div class="skills-info">
+          <h2 class="section-title">Giải Pháp Toàn Diện</h2>
+          <p class="skills-desc">
+            Không chỉ nghiên cứu tạo ra công thức tốt, tôi tập trung tối ưu hóa hiệu quả vận hành của doanh nghiệp bằng cách tự động hóa bảng tính, xây dựng công cụ số hóa quy trình (Auto App) để giảm thiểu sai sót do con người và đẩy nhanh tốc độ thương mại hóa sản phẩm.
+          </p>
+          <div class="skills-badges">
+            <span class="skill-badge"><i class="fa-solid fa-check"></i> Chuẩn CGMP/GMP-WHO</span>
+            <span class="skill-badge"><i class="fa-solid fa-check"></i> Quy đổi đơn vị thông minh</span>
+            <span class="skill-badge"><i class="fa-solid fa-check"></i> Tự động hóa Excel/Google Sheet</span>
+            <span class="skill-badge"><i class="fa-solid fa-check"></i> Lập trình Apps Script & Desktop App</span>
+          </div>
+        </div>
+        
+        <div class="skills-bars-container">
+          <h3 class="skills-bars-title">Chỉ số Năng lực</h3>
+          <div class="skills-list" id="skills-list-container">
+            <!-- Rendered dynamically from data.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section (Kho ứng dụng tự động hóa) -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Kho Ứng Dụng Tự Động Hóa</h2>
+          <p class="section-subtitle">Các công cụ phần mềm tự xây dựng phục vụ chuyên sâu cho R&D và vận hành nhà máy</p>
+          
+          <!-- Filters -->
+          <div class="portfolio-filters" id="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Tất cả</button>
+            <button class="filter-btn" data-filter="app">Ứng dụng chuyên ngành (App)</button>
+            <button class="filter-btn" data-filter="automation">Tự động hóa dữ liệu (Automation)</button>
+          </div>
+        </div>
+        
+        <div class="projects-grid grid" id="projects-container">
+          <!-- Rendered dynamically from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Library Section (Thư viện tài liệu chia sẻ từ Google Drive) -->
+    <section class="library section" id="library">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Thư Viện Tài Liệu Chia Sẻ</h2>
+          <p class="section-subtitle">Tổng hợp file công thức, tài liệu kỹ thuật R&D, và template Google Sheet (Tải từ Google Drive cá nhân)</p>
+          
+          <!-- Direct Drive & WebApp Portals -->
+          <div class="library-portals" style="margin-top: 30px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <a href="https://drive.google.com/drive/folders/1xh5HYDwtYePJjn9-wUpeXXkIAX15ioPA?usp=sharing" target="_blank" class="btn btn-primary">
+              <i class="fa-brands fa-google-drive"></i> Mở Thư mục Google Drive
+            </a>
+            <a href="https://script.google.com/macros/s/AKfycbyLomg46ybxclBzHUIDH3PwivLOQPjbnYcKRApNj-Ql0JtgFU7skuT3hLVsjExc-nU/exec?id=tailieu" target="_blank" class="btn btn-secondary">
+              <i class="fa-solid fa-shield-halved"></i> Cổng tải bảo mật (Apps Script)
+            </a>
+          </div>
+        </div>
+        
+        <!-- Search and Filter Bar -->
+        <div class="library-search-bar glass">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="library-search" placeholder="Nhập tên tài liệu, công thức, định dạng file cần tìm...">
+          </div>
+          <div class="search-select-wrapper">
+            <i class="fa-solid fa-filter filter-icon"></i>
+            <select id="library-filter">
+              <option value="all">Tất cả danh mục</option>
+              <option value="legal">Văn bản pháp luật</option>
+              <option value="research">Tài liệu nghiên cứu</option>
+              <option value="design">Ứng dụng thiết kế</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Document Grid -->
+        <div class="library-grid grid" id="library-container">
+          <!-- Rendered dynamically from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Kết Nối Với Tôi</h2>
+          <p class="section-subtitle">Trao đổi cơ hội hợp tác, tư vấn xây dựng công thức R&D hoặc phát triển ứng dụng tự động hóa</p>
+        </div>
+        
+        <div class="contact-container grid">
+          <!-- Info Column -->
+          <div class="contact-info glass">
+            <h3>Thông tin liên hệ</h3>
+            <p class="contact-info-desc">Hãy gửi tin nhắn hoặc kết nối trực tiếp qua Zalo/Email. Tôi sẽ phản hồi lại bạn sớm nhất có thể.</p>
+            
+            <ul class="contact-list">
+              <li class="contact-item">
+                <i class="fa-solid fa-envelope contact-icon"></i>
+                <div>
+                  <span class="contact-label">Email công việc</span>
+                  <a href="mailto:rd.newlab@gmail.com" class="contact-value" id="contact-email">rd.newlab@gmail.com / softwarefull2023@gmail.com</a>
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-solid fa-phone contact-icon"></i>
+                <div>
+                  <span class="contact-label">Số điện thoại</span>
+                  <span class="contact-value" id="contact-phone">0902 620 715 / 0943 156 780</span>
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-solid fa-location-dot contact-icon"></i>
+                <div>
+                  <span class="contact-label">Địa chỉ làm việc</span>
+                  <span class="contact-value" id="contact-address">TP. Hồ Chí Minh, Việt Nam</span>
+                </div>
+              </li>
+            </ul>
+            
+            <div class="contact-socials">
+              <a href="#" class="social-btn glass" id="social-zalo" target="_blank" title="Kết nối Zalo"><i class="fa-brands fa-whatsapp"></i> Zalo</a>
+              <a href="#" class="social-btn glass" id="social-github" target="_blank" title="Ghé thăm GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+          
+          <!-- Message Form -->
+          <form class="contact-form glass" id="contact-form">
+            <h3>Gửi tin nhắn trực tiếp</h3>
+            <div class="form-group grid-2">
+              <div class="input-wrapper">
+                <label for="form-name">Họ và tên <span class="required">*</span></label>
+                <input type="text" id="form-name" placeholder="Họ và tên của bạn" required>
+              </div>
+              <div class="input-wrapper">
+                <label for="form-email">Địa chỉ Email <span class="required">*</span></label>
+                <input type="email" id="form-email" placeholder="example@gmail.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <label for="form-subject">Chủ đề cần trao đổi</label>
+                <input type="text" id="form-subject" placeholder="Ví dụ: Tư vấn công thức R&D, thiết kế App...">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <label for="form-message">Nội dung tin nhắn <span class="required">*</span></label>
+                <textarea id="form-message" rows="5" placeholder="Nhập nội dung bạn muốn trao đổi chi tiết tại đây..." required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">
+              <i class="fa-solid fa-paper-plane"></i> Gửi thông tin liên hệ
+            </button>
+            <div class="form-alert" id="form-alert"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <svg class="logo-svg" width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 3px rgba(6, 182, 212, 0.4));">
+          <use href="#logo-grad" />
+          <path d="M42,15 H58 M50,15 V35 L30,75 C27,80 31,86 37,86 H63 C69,86 73,80 70,75 L50,35" stroke="url(#logo-grad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="50" cy="52" r="5" fill="#06b6d4" />
+          <circle cx="38" cy="70" r="4" fill="#a855f7" />
+          <circle cx="62" cy="70" r="4" fill="#06b6d4" />
+          <path d="M50,52 L38,70 M50,52 L62,70" stroke="url(#logo-grad)" stroke-width="2" stroke-dasharray="3,3" />
+          <circle cx="50" cy="27" r="10" stroke="#a855f7" stroke-width="3" fill="none" stroke-dasharray="4,2" />
+        </svg>
+        <span><span class="gradient-text">rd</span>.newlab</span>
+      </div>
+      <p class="footer-copy">&copy; 2026. Thiết kế và tối ưu bởi AI Coding Assistant. Nội dung thuộc sở hữu của R&D Specialist.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
